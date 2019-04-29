@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>S05GossipGui</title>
+    <title><%= @title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,27 +11,64 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Bootstrap -->
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous">
+
   </head>
 
   <body>
-    <header class="navbar header">
-      <h1 class="navbar-brand">
-        <%= link_to "the Gossip Project", root_path %>
-      </h1>
-      <nav>
-        <%= link_to "la TEAM", team_path %>
-        <%= link_to "Nous CONTACTER", contact_path %>
-      </nav>
-    </header>
+    <div class="viewport">
 
-    <div class="container">
-      <%= yield %>
+      <header class="navbar header">
+        <h1 class="navbar-brand">
+          <%= link_to "Po-Potins", root_path %>
+        </h1>
+        <nav>
+          <%= link_to "la TEAM", team_path %>
+          <%= link_to "Nous CONTACTER", contact_path %>
+        </nav>
+      </header>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+
+      <footer class=''>
+        <div class="container">
+          <div class="row">
+
+            <div class="col">
+              <p>Un petit test de footer</p>
+            </div>
+
+            <div class="col">
+              <p>follow us on</p>
+              <a class="twitter-follow-button"
+              href="https://twitter.com/eddymalou"
+              data-size="large">
+                <i class="fab fa-twitter fa-2x"></i>
+              </a>
+              <a href="https://www.facebook.com/pages/category/Chef/Sylvain-Pierre-Durif-le-Grand-Monarque-Le-christ-Cosmique-1726743444214535/">
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a href="https://github.com/thp-grenobles8">
+                <i class="fab fa-github fa-2x"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
     </div>
-
   </body>
 </html>

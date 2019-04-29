@@ -15,13 +15,17 @@
  */
 
 html {
-  font-family: Ubuntu, Calibri, sans-serif;
+  font-family: Ubuntu, Calibri, sans-serif !important;
+  color: #333 !important;
   background: #F5F5F5;
   background: linear-gradient(175deg, #FFF 2%, #CC9);
-  min-height: 100%;
+  /* min-height: 100%;
+  position: relative; */
 }
 body {
   background: transparent !important;
+  /* min-height: 100%;
+  position: relative; */
 }
 
 h2 {
@@ -39,6 +43,33 @@ a {
 
 section {
   margin: 2em 0;
+}
+
+.viewport {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #CBA;
+  background: linear-gradient(175deg, #FED 12%, #CBA);
+  color: #555;
+  text-align: center;
+  min-height: 100px;
+}
+footer p {
+  margin: 1em;
+}
+footer a {
+  color: #555 !important;
+  margin: 1em;
+}
+footer a:hover {
+  text-shadow: 2px 2px 2px #888;
 }
 
 .header {
