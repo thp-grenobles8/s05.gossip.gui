@@ -7,9 +7,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar header">
+      <h1 class="navbar-brand">
+        <%= link_to "the Gossip Project", root_path %>
+      </h1>
+      <nav>
+        <%= link_to "la TEAM", team_path %>
+        <%= link_to "Nous CONTACTER", contact_path %>
+      </nav>
+    </header>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

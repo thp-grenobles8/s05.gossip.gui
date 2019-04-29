@@ -1,24 +1,27 @@
-# README
+# the Gossip Project - version FULLSTACK
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+On passe aux choses serieuses
 
-Things you may want to cover:
+## use
 
-* Ruby version
+un petit `git clone https://github.com/thp-grenobles8/s05.gossip.gui`
 
-* System dependencies
+un petit `cd `dans chaque dossier, suivi d'un `bundle install`
 
-* Configuration
+on oublie pas `rails db:create`
 
-* Database creation
+si tu veux de la data (ce qui est plutôt utile) tu peux lancer les seeds avec `rails db:seed`, de jolis **puts**
+te permettrons de suivre l'avancement.
 
-* Database initialization
+après ça, lance le serveur avec `rails server` ou `shotgun -p 3000` (inclus dans le gemfile)
 
-* How to run the test suite
+tu peux maintenant te connecter au [SITE](http://localhost:3000/)
 
-* Services (job queues, cache servers, search engines, etc.)
+## la team
 
-* Deployment instructions
+- Guillaume Silvent @gui3
+- Anis Bouhouche @Anis
 
-* ...
+En vrai on a fait chacun de notre côté
+mais comme on s'entraide beaucoup ...
+c'est du PIRE-programming, un peu amélioré.

@@ -1,0 +1,33 @@
+<section>
+  <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+
+  <dl>
+    <dt>Age :</dt>
+      <dd><%= @user.age %> ans</dd>
+    <dt>Adresse mail :</dt>
+      <dd><%= @user.email %></dd>
+  </dl>
+</section>
+
+<section>
+  <h3>Description :</h3>
+  <q>
+    <%= @user.description %>
+  </q>
+</section>
+
+<section>
+  <h3>Ses potins :</h3>
+
+  <div class="card-columns">
+  <% @user.gossips.each { |g| %>
+
+    <div class="card">
+      <h5 class="card-body">
+        <%= link_to g.title, show_gossip_path(g.id), class:'stretched-link' %>
+      </h5>
+    </div>
+
+  <% } %>
+  </div>
+</section>

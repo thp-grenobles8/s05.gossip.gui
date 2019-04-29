@@ -31,7 +31,7 @@ puts 'USERS -------------'
   u = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    description: Faker::Lorem.sentence(15),
+    description: Faker::Quote.famous_last_words,
     email: Faker::Internet.email,
     age: rand(1..90),
     city: City.all.sample
@@ -43,7 +43,7 @@ puts 'GOSSIPS --------------'
 20.times {
   g = Gossip.create!(
     title: Faker::Book.title,
-    content: Faker::Lorem.sentence(30),
+    content: Faker::Quote.famous_last_words,
     author: User.all.sample
   )
   puts "#{g.author.first_name} posted #{g.title}"

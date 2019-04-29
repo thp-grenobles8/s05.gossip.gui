@@ -1,0 +1,10 @@
+<h3>Bienvenue, <%= @user_name ? @user_name : "..inconnu ?" %></h3>
+<% if @user_name %>
+<p>On t'a reconnu, rascal !</p>
+<% else %>
+<p>
+  (alors, que je t'explique,
+  il faut que tu indiques un nom dans l'url, comme ça :<br/>
+  /welcome/<nom>)
+</p>
+<% end %>

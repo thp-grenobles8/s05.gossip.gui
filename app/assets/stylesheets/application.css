@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  font-family: Ubuntu, Calibri, sans-serif;
+  background: #F5F5F5;
+  background: linear-gradient(175deg, #FFF 2%, #CC9);
+  min-height: 100%;
+}
+body {
+  background: transparent !important;
+}
+
+h2 {
+  font-weight: bolder !important;
+  margin:1em 0 !important;
+}
+h3 {
+  border-bottom: 2px solid #FD6;
+}
+
+a {
+  font-weight: bold;
+  color: #C55 !important;
+}
+
+section {
+  margin: 2em 0;
+}
+
+.header {
+  background: #CA0;
+  background: linear-gradient(175deg, #FE8 12%, #CA0);
+  color: #EEE;
+  padding: 0;
+}
+.header a {
+  color: #443 !important;
+  font-weight: bold;
+  /* text-shadow: 1px 1px 1px #980; */
+}
+.header a:hover {
+  color: #554 !important;
+  font-weight: bolder;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #980;
+}
+.header h1 {
+  font-size: 2em;
+  color: #DDD;
+  margin: 0;
+}
+.header nav a {
+  font-style: italic;
+  margin: 0.2em;
+}
+
+.card {
+  box-shadow: 1px 1px 2px #872;
+  /* padding: 1em; */
+}
+
+.teamMember {
+  max-width: 300px;
+}
