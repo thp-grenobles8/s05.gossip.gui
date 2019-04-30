@@ -12,10 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet"
+    <!-- <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
+    crossorigin="anonymous"> -->
+
+    <!-- Bootswatch -->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
 
     <!-- FontAwesome -->
     <link rel="stylesheet"
@@ -34,9 +38,27 @@
         </h1>
         <nav>
           <%= link_to "la TEAM", team_path %>
+          -
           <%= link_to "Nous CONTACTER", contact_path %>
+          <%= link_to new_gossip_path, class:'icon' do %>
+            <i class="fa fa-plus-circle fa-2x"></i>
+          <% end %>
         </nav>
       </header>
+
+      <div class="flashes">
+        <% if flash[:success] %>
+          <div class="alert alert-success" role="alert">
+            <%= flash[:success] %>
+          </div>
+        <% end %>
+
+        <% if flash[:danger] %>
+          <div class="alert alert-danger" role="alert">
+            <%= flash[:danger] %>
+          </div>
+        <% end %>
+      </div>
 
       <div class="container">
         <%= yield %>

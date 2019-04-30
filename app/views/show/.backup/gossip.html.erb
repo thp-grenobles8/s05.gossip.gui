@@ -1,0 +1,10 @@
+<h2>"<%= @gossip.title %>"</h2>
+<q>
+  <%= @gossip.content %>
+</q>
+<p>
+  publié par
+  <%= link_to @gossip.author.first_name+" "+
+  @gossip.author.last_name,
+  show_user_path(@gossip.author.id) %>
+</p>

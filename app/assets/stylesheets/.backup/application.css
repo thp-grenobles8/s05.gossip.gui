@@ -14,42 +14,36 @@
  *= require_self
  */
 
-.header {
-  background: #CA0;
-  background: linear-gradient(175deg, #FE8 12%, #CA0);
+html {
+  font-family: Ubuntu, Calibri, sans-serif !important;
+  color: #333 !important;
+  background: #F5F5F5;
+  background: linear-gradient(175deg, #FFF 2%, #CC9);
+  /* min-height: 100%;
+  position: relative; */
 }
-
-a:hover {
-  color: #B05 !important;
-  text-shadow: 2px 2px 3px #777;
-  text-decoration: none !important;
-}
-
-nav {
-  display: flex !important ;
-  align-items: center !important;
-}
-nav a {
-  margin: 0 0.4em;
+body {
+  background: transparent !important;
+  /* min-height: 100%;
+  position: relative; */
 }
 
 h2 {
-  margin: 2em 0 !important;
+  font-weight: bolder !important;
+  margin:1em 0 !important;
+}
+h3 {
+  border-bottom: 2px solid #FD6;
 }
 
-input[type=submit] {
-  background: none;
-  border: 1px solid #333;
-}
-input[type=submit]:hover {
-  border: 1px solid #B05;
-  color: #B05;
-  text-shadow: 2px 2px 3px #777;
-  box-shadow: 2px 2px 3px #777;
+a {
+  font-weight: bold;
+  color: #C55 !important;
 }
 
-
-/* FOOTER ------------- */
+section {
+  margin: 2em 0;
+}
 
 .viewport {
   min-height: 100vh;
@@ -76,6 +70,38 @@ footer a {
 }
 footer a:hover {
   text-shadow: 2px 2px 2px #888;
+}
+
+.header {
+  background: #CA0;
+  background: linear-gradient(175deg, #FE8 12%, #CA0);
+  color: #EEE;
+  padding: 0;
+}
+.header a {
+  color: #443 !important;
+  font-weight: bold;
+  /* text-shadow: 1px 1px 1px #980; */
+}
+.header a:hover {
+  color: #554 !important;
+  font-weight: bolder;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #980;
+}
+.header h1 {
+  font-size: 2em;
+  color: #DDD;
+  margin: 0;
+}
+.header nav a {
+  font-style: italic;
+  margin: 0.2em;
+}
+
+.card {
+  box-shadow: 1px 1px 2px #872;
+  /* padding: 1em; */
 }
 
 .teamMember {
