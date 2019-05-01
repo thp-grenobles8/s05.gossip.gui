@@ -10,7 +10,12 @@
       </h5>
       <p class="card-subtitle">
         publié par
-        <%= link_to g.author.first_name, show_user_path(g.author.id) %>
+        <%= link_to g.author.first_name, user_path(g.author.id) %>
+      </p>
+      <p>
+        <i class="fas fa-comments">
+          <%= g.comments.count %>
+        </i>
       </p>
     </div>
   </div>

@@ -1,10 +1,65 @@
+
 <h2>"<%= @gossip.title %>"</h2>
-<q>
+<blockquote>
   <%= @gossip.content %>
-</q>
+</blockquote>
 <p>
   publié par
   <%= link_to @gossip.author.first_name+" "+
   @gossip.author.last_name,
-  show_user_path(@gossip.author.id) %>
+  user_path(@gossip.author.id) %>
+  de
+  <%= link_to @gossip.author.city.name,
+  city_path(@gossip.author.city.id) %>
 </p>
+
+<section class="tags">
+  <% @gossip.tags.each do |t| %>
+  <span class="tag">
+    <%= t.title %>
+  </span>
+  <% end %>
+</section>
+
+<p>
+  <%= link_to edit_gossip_path(@gossip.id)  do%>
+    <i class="fa fa-pen"> MODIFIER</i>
+  <% end %>
+
+  <%= link_to gossip_path(@gossip.id) ,
+  :data => {:confirm => "Tu es sûr.e de vouloir supprimer le potin ?"},
+  :method => :delete  do %>
+    <i class="fa fa-trash-alt"> SUPPRIMER</i>
+  <% end %>
+</p>
+
+<section class="comments">
+  <h4><i class="fa fa-comment"> Commentaires</i></h4>
+
+  <%= form_tag url_for(action: 'create',
+  controller: 'comments'),
+  method: "post" do %>
+    <%= text_field_tag :gossip_id, @gossip.id, type: 'hidden'%>
+    <%= text_field_tag 'comment_content' %>
+    <%= submit_tag "Balance ton com'" %>
+  <% end %>
+
+  <section>
+    <div class="">
+    <% @gossip.comments.sort_by{|c| c.created_at}.reverse.each { |c| %>
+
+      <div class="comment">
+        <p class="">
+          <%= link_to edit_comment_path(c.id) do %>
+            <i class="fa fa-pen"></i>
+          <% end %>
+          <%= link_to c.author.first_name, user_path(c.author.id) %> :
+          <%= c.content %>
+        </p>
+      </div>
+
+    <% } %>
+    </div>
+  </section>
+
+</section>

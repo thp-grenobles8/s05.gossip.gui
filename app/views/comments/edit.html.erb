@@ -1,0 +1,32 @@
+<h2>Modifier un commentaire :</h2>
+
+<p>
+  Gossip :
+  <%= link_to @comment.gossip.title,
+  gossip_path(@comment.gossip.id) %>
+</p>
+
+<p>
+  Auteur du commentaire :
+  <%= link_to @comment.author.first_name,
+  user_path(@comment.author.id) %>
+</p>
+
+<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+
+  <%= label_tag 'Contenu :' %> <br/>
+  <%= text_area_tag 'comment_content', @comment.content %>
+  <br /> <br />
+
+
+  <%= submit_tag "corrigé ?" %>
+
+<% end %>
+
+
+<%= link_to comment_path(@comment.id) ,
+:data => {:confirm => "Tu es sûr.e de vouloir supprimer le commentaire ?"},
+:method => :delete  do %>
+  <i class="fa fa-trash-alt"> SUPPRIMER</i>
+<% end %>

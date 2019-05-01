@@ -6,7 +6,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(
       title: params[:gossip_title],
       content: params[:gossip_content],
-      author: User.all.sample
+      author: User.anonymous
     )
     if @gossip.save
       flash[:success] = "Ton potin a été ajouté !"
@@ -18,12 +18,27 @@ class GossipsController < ApplicationController
   end
 
   def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(
+      title: params[:gossip_title],
+      content: params[:gossip_content]
+    )
+      flash[:success] = "Potin modifié !"
+      redirect_to :root
+    else
+      flash[:danger] = "Potin non valide !"
+      render :edit
+    end
   end
 
   def edit
+    @gossip = Gossip.find(params[:id])
   end
 
   def destroy
+    Gossip.find(params[:id]).destroy
+    flash[:success] = "Potin supprimé !"
+    redirect_to :root
   end
 
   def index

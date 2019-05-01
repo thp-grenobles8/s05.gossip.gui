@@ -1,0 +1,36 @@
+<section>
+  <h2>Ville de <%= @city.name %></h2>
+  <p>Code postal : <%= @city.zip_code %></p>
+</section>
+
+<section>
+  <h3>Ses habitants :</h3>
+
+  <div class="card-columns">
+  <% @city.users.each { |u| %>
+
+    <div class="card">
+      <h5 class="card-body">
+        <%= link_to u.first_name, user_path(u.id), class:'stretched-link' %>
+      </h5>
+    </div>
+
+  <% } %>
+  </div>
+</section>
+
+<section>
+  <h3>Ses potins :</h3>
+
+  <div class="card-columns">
+  <% @city.gossips.each { |g| %>
+
+    <div class="card">
+      <h5 class="card-body">
+        <%= link_to g.title, gossip_path(g.id), class:'stretched-link' %>
+      </h5>
+    </div>
+
+  <% } %>
+  </div>
+</section>

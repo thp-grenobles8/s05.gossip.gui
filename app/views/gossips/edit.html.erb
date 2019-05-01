@@ -1,2 +1,36 @@
-<h1>Gossips#edit</h1>
-<p>Find me in app/views/gossips/edit.html.erb</p>
+<h2>Editer un potin :</h2>
+
+<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+  <%= label_tag 'Titre :' %> <br/>
+  <%= text_field_tag 'gossip_title', @gossip.title %>
+  <br /> <br />
+
+  <%= label_tag 'Contenu :' %> <br/>
+  <%= text_area_tag 'gossip_content', @gossip.content %>
+  <br /> <br />
+
+
+  <%= submit_tag "Re-balance ton Potin" %>
+
+<% end %>
+
+
+
+
+
+<!--
+<form action= <%= gossips_path(@gossip.id) %> method="PUT">
+  <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+
+  <label for="gossip_title">Titre</label><br/>
+  <input type="text" name="gossip_title"
+  value="<%= @gossip.title %>"><br/><br/>
+
+  <label for="gossip_content">Contenu</label><br/>
+  <textarea name="gossip_content">
+<%= @gossip.content %>
+  </textarea><br/><br/>
+
+  <input type="submit" value="Re-balance ton po-tin">
+</form> -->

@@ -6,14 +6,16 @@
       <dd><%= @user.age %> ans</dd>
     <dt>Adresse mail :</dt>
       <dd><%= @user.email %></dd>
+    <dt>Nous vient de :</dt>
+      <dd><%= @user.city.name %></dd>
   </dl>
 </section>
 
 <section>
   <h3>Description :</h3>
-  <q>
+  <blockquote>
     <%= @user.description %>
-  </q>
+  </blockquote>
 </section>
 
 <section>

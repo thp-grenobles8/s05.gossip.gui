@@ -19,6 +19,9 @@
   background: linear-gradient(175deg, #FE8 12%, #CA0);
 }
 
+a {
+  margin: 0 0.4em;
+}
 a:hover {
   color: #B05 !important;
   text-shadow: 2px 2px 3px #777;
@@ -28,9 +31,6 @@ a:hover {
 nav {
   display: flex !important ;
   align-items: center !important;
-}
-nav a {
-  margin: 0 0.4em;
 }
 
 h2 {
@@ -47,7 +47,29 @@ input[type=submit]:hover {
   text-shadow: 2px 2px 3px #777;
   box-shadow: 2px 2px 3px #777;
 }
+.icon {
+  background: none;
+  border: none;
+  margin: 0 0.4em;
+}
+.icon:hover {
+  color: #B05 !important;
+  text-shadow: 2px 2px 3px #777;
+  text-decoration: none !important;
+}
 
+.tag {
+  display: inline-block;
+  background: #C35;
+  color: #FFF;
+  font-weight: bold;
+  border-radius: 0.8em;
+  height: 2em;
+  margin: 0.4em;
+  padding: 0.4em;
+  text-align: center;
+  vertical-align: middle;
+}
 
 /* FOOTER ------------- */
 

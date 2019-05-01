@@ -12,6 +12,7 @@ puts 'deleting database...'
 PrivateMessage.destroy_all
 JoinTagGossip.destroy_all
 Tag.destroy_all
+Comment.destroy_all
 Gossip.destroy_all
 User.destroy_all
 City.destroy_all
@@ -42,7 +43,7 @@ puts 'USERS -------------'
 puts 'GOSSIPS --------------'
 20.times {
   g = Gossip.create!(
-    title: Faker::Book.title,
+    title: Faker::Cannabis.buzzword,
     content: Faker::Quote.famous_last_words,
     author: User.all.sample
   )
@@ -81,4 +82,16 @@ puts 'PRIVATE MESSAGES ------------'
     recipient: recipient
   )
   puts "#{pm.sender.first_name} a envoyé un message à #{pm.recipient.first_name}"
+}
+
+puts 'COMMENTS --------------------'
+40.times {
+  coms_text = ['LOL', 'XPTdR', 'génial', 'je plussoie',
+  'XD jador t ki ?', "c'est pas ouf quoi", '+1', 'first']
+  com = Comment.create!(
+    content: coms_text.sample,
+    author: User.all.sample,
+    gossip: Gossip.all.sample
+  )
+  puts "#{com.author.first_name} a commenté un gossip avec #{com.content}"
 }
