@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :send_messages, foreign_key: 'sender_id', class_name: 'PrivateMessage'
   has_many :revieved_messages, foreign_key: 'recipient_id', class_name: 'PrivateMessage'
 
+  has_secure_password
+
+  validates :password, presence: true, length: { minimum: 4 }
+
   def self.anonymous
     anonymous = User.find_by(
       first_name: 'anonymous',
