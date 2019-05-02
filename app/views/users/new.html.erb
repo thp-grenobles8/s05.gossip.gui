@@ -1,0 +1,40 @@
+<h2>Nouveau compte</h2>
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+  <%= label_tag 0,'Prénom (ou pseudo)* :', class: 'compulsory' %> <br/>
+  <%= text_field_tag 'user_first_name' %>
+  <br /> <br />
+
+  <%= label_tag 'Nom :' %> <br/>
+  <%= text_field_tag 'user_last_name' %>
+  <br /> <br />
+
+  <%= label_tag 0,'Adresse mail* :', class: 'compulsory' %> <br/>
+  <%= text_field_tag 'user_email' %>
+  <br /> <br />
+
+  <%= label_tag 0,'Mot de passe* :', class: 'compulsory' %> <br/>
+  <%= text_field_tag 'user_password' %>
+  <br /> <br />
+
+  <%= label_tag 0,'Confirmer le mot de passe* :', class: 'compulsory' %> <br/>
+  <%= text_field_tag 'user_password_2' %>
+  <br /> <br />
+
+  <%= label_tag 0,'Ville* :', class: 'compulsory' %> <br/>
+  <%= text_field_tag 'user_city_name' %>
+  <br /> <br />
+
+  <%= label_tag 'Age :' %> <br/>
+  <%= text_field_tag 'user_age' %>
+  <br /> <br />
+
+  <%= label_tag 'Une petite description de tes intérêts :' %> <br/>
+  <%= text_area_tag 'user_description' %>
+  <br /> <br />
+
+
+  <%= submit_tag "Rejoins-nous !" %>
+
+<% end %>

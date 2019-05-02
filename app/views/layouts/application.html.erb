@@ -32,30 +32,77 @@
   <body>
     <div class="viewport">
 
-      <header class="navbar header">
+      <header class="navbar">
         <h1 class="navbar-brand">
           <%= link_to "Po-Potins", root_path %>
         </h1>
+
         <nav>
           <%= link_to "la TEAM", team_path %>
           -
           <%= link_to "Nous CONTACTER", contact_path %>
-          <%= link_to new_gossip_path, class:'icon' do %>
-            <i class="fa fa-plus-circle fa-2x"></i>
+        </nav>
+
+        <nav>
+          <% if logged_in? %>
+            <%= link_to new_gossip_path, class:'icon' do %>
+              <i class="fa fa-plus-circle fa-2x"></i> Publier
+            <% end %>
+
+            <div class="dropdown show">
+              <a class="dropdown-toggle"
+              href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+                <i class="fa fa-user fa-2x"></i>
+                <%= current_user.first_name %>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <%= link_to user_path(current_user.id),
+                class: "dropdown-item" do %>
+                  Mon Profil
+                <% end %>
+                <%= link_to session_path(session.id),
+                method: :delete, class: "dropdown-item" do %>
+                  Se Déconnecter
+                <% end %>
+              </div>
+            </div>
+
+          <% else %>
+
+
+            <div class="dropdown show">
+              <a class="dropdown-toggle"
+              href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+                <i class="fa fa-user-cog fa-2x"></i>
+                Connexion
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <%= link_to new_session_path,
+                class: "dropdown-item" do %>
+                  Se Connecter
+                <% end %>
+                <%= link_to new_user_path,
+                class: "dropdown-item" do %>
+                  S'inscrire
+                <% end %>
+              </div>
+            </div>
+
           <% end %>
         </nav>
       </header>
 
       <div class="flashes">
-        <% if flash[:success] %>
-          <div class="alert alert-success" role="alert">
-            <%= flash[:success] %>
-          </div>
-        <% end %>
 
-        <% if flash[:danger] %>
-          <div class="alert alert-danger" role="alert">
-            <%= flash[:danger] %>
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %>">
+            <%= value %>
           </div>
         <% end %>
       </div>
@@ -93,4 +140,16 @@
 
     </div>
   </body>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
+
 </html>

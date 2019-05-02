@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get 'tags/create'
   resources :gossips, only: [
     :index, :show, :new, :create, :edit, :update, :destroy
-  ]
-  resources :users, only: [:show]
+  ] do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  resources :users, only: [:show, :new, :create]
   resources :cities, only: [:show]
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :tags, only: [:create]
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   # ----------------------
   root 'gossips#index'

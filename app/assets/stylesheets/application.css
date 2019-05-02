@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.header {
+header {
   background: #CA0;
   background: linear-gradient(175deg, #FE8 12%, #CA0);
 }
@@ -69,6 +69,11 @@ input[type=submit]:hover {
   padding: 0.4em;
   text-align: center;
   vertical-align: middle;
+}
+
+.compulsory {
+  color: #F35 !important;
+  font-weight: bold !important;
 }
 
 /* FOOTER ------------- */

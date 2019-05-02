@@ -10,6 +10,7 @@ require 'faker'
 
 puts 'deleting database...'
 PrivateMessage.destroy_all
+Like.destroy_all
 JoinTagGossip.destroy_all
 Tag.destroy_all
 Comment.destroy_all
@@ -29,13 +30,14 @@ puts 'CITIES ------------'
 
 puts 'USERS -------------'
 10.times {
-  u = User.create!(
+  u = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Quote.famous_last_words,
     email: Faker::Internet.email,
     age: rand(1..90),
-    city: City.all.sample
+    city: City.all.sample,
+    password: "password"
   )
   puts "-user #{u.first_name} created"
 }
@@ -66,6 +68,21 @@ Gossip.all.each {
         tag: t
       )
       puts "tag #{t.title} added to gossip #{g.title}"
+    end
+  }
+}
+
+puts 'LIKES -----------------------'
+User.all.each {
+  |u|
+  8.times {
+    g = Gossip.all.sample
+    if !u.liked_gossips.include?(g)
+      l = Like.create!(
+        gossip: g,
+        user: u
+      )
+      puts "#{u.first_name} liked #{g.title}"
     end
   }
 }

@@ -27,8 +27,21 @@
 
     <div class="card">
       <h5 class="card-body">
-        <%= link_to g.title, gossip_path(g.id), class:'stretched-link' %>
+        <%= link_to g.title, gossip_path(g.id) %>
       </h5>
+      <% if like_from_user_gossip(current_user, g) %>
+        <%= link_to gossip_like_path(
+          g.id,
+          like_from_user_gossip(current_user, g).id
+        ), data: {}, :method => :delete  do%>
+          <i class="fas fa-heart"></i>
+        <% end %>
+      <% else %>
+        <%= link_to gossip_likes_path(g.id), data:{}, :method => :post  do%>
+          <i class="far fa-heart"></i>
+        <% end %>
+      <% end %>
+      <%= g.likes.count %>
     </div>
 
   <% } %>

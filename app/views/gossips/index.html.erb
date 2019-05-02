@@ -1,7 +1,7 @@
 <h2>Voici la liste des potins :</h2>
 
 <div class="card-columns">
-<% @gossips.each { |g| %>
+<% @gossips.sort_by{|g| g.created_at}.reverse.each { |g| %>
 
   <div class="card">
     <div class="card-body">
@@ -16,6 +16,20 @@
         <i class="fas fa-comments">
           <%= g.comments.count %>
         </i>
+
+        <% if like_from_user_gossip(current_user, g) %>
+          <%= link_to gossip_like_path(
+            g.id,
+            like_from_user_gossip(current_user, g).id
+          ), data: {}, :method => :delete  do%>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to gossip_likes_path(g.id), data:{}, :method => :post  do%>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <% end %>
+        <%= g.likes.count %>
       </p>
     </div>
   </div>

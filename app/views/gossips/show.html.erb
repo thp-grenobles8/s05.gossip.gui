@@ -13,6 +13,32 @@
   city_path(@gossip.author.city.id) %>
 </p>
 
+<p>
+  <% if like_from_user_gossip(current_user, @gossip) %>
+    <%= link_to gossip_like_path(
+      @gossip.id,
+      like_from_user_gossip(current_user, @gossip).id
+    ), data: {}, :method => :delete  do%>
+      <i class="fas fa-heart fa-2x"></i>
+    <% end %>
+  <% else %>
+    <%= link_to gossip_likes_path(@gossip.id), data:{}, :method => :post  do%>
+      <i class="far fa-heart fa-2x"></i>
+    <% end %>
+  <% end %>
+
+  <% if @gossip.likes.count > 0 %>
+    <%= @gossip.likes.count %>
+
+    ( Liké par :
+
+    <%@gossip.likes.each do |l| %>
+      <span><%= l.user.first_name %></span>
+    <% end %>
+    )
+  <% end %>
+</p>
+
 <section class="tags">
   <% @gossip.tags.each do |t| %>
   <span class="tag">
@@ -21,17 +47,19 @@
   <% end %>
 </section>
 
-<p>
-  <%= link_to edit_gossip_path(@gossip.id)  do%>
-    <i class="fa fa-pen"> MODIFIER</i>
-  <% end %>
+<% if current_user == @gossip.author %>
+  <p>
+    <%= link_to edit_gossip_path(@gossip.id)  do%>
+      <i class="fa fa-pen"> MODIFIER</i>
+    <% end %>
 
-  <%= link_to gossip_path(@gossip.id) ,
-  :data => {:confirm => "Tu es sûr.e de vouloir supprimer le potin ?"},
-  :method => :delete  do %>
-    <i class="fa fa-trash-alt"> SUPPRIMER</i>
-  <% end %>
-</p>
+    <%= link_to gossip_path(@gossip.id) ,
+    :data => {:confirm => "Tu es sûr.e de vouloir supprimer le potin ?"},
+    :method => :delete  do %>
+      <i class="fa fa-trash-alt"> SUPPRIMER</i>
+    <% end %>
+  </p>
+<% end %>
 
 <section class="comments">
   <h4><i class="fa fa-comment"> Commentaires</i></h4>
@@ -50,11 +78,13 @@
 
       <div class="comment">
         <p class="">
-          <%= link_to edit_comment_path(c.id) do %>
-            <i class="fa fa-pen"></i>
-          <% end %>
           <%= link_to c.author.first_name, user_path(c.author.id) %> :
           <%= c.content %>
+          <% if current_user == c.author %>
+            <%= link_to edit_comment_path(c.id) do %>
+              <i class="fa fa-pen"></i>
+            <% end %>
+          <% end %>
         </p>
       </div>
 

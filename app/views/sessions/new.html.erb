@@ -1,0 +1,20 @@
+<h3>Identifie toi</h3>
+
+<form action="<%= sessions_path %>" method="post">
+  <input type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+  <label for="email">Email :</label><br/>
+  <input type="text" name="email" value="<%= @email %>"><br/>
+  <label for="password">Mot de passe :</label><br/>
+  <input type="text" name="password" value=""><br/>
+  <input type="submit" value="Connection">
+</form>
+
+<p>Pas encore inscrit ?
+
+<%= link_to new_user_path do %>
+  S'inscrire
+<% end %>
+
+</p>

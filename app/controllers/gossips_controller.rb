@@ -1,4 +1,21 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except: [:index] #:show
+  before_action :verify_author, only: [:edit, :destroy]
+
+  def authenticate_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
+  def verify_author
+    unless current_user == Gossip.find(params[:id])
+      flash[:danger] = "BIEN ESSAYÉ"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def new
   end
 
@@ -6,7 +23,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(
       title: params[:gossip_title],
       content: params[:gossip_content],
-      author: User.anonymous
+      author: current_user
     )
     if @gossip.save
       flash[:success] = "Ton potin a été ajouté !"

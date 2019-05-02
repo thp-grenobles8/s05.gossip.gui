@@ -2,6 +2,13 @@
 
 On passe aux choses serieuses
 
+## indices
+
+Tous les users créés dans le seed ont comme mot de passe `password`
+
+Tu peux donc te connecter a n'importe quel compte
+en récupérant son adresse mail dans sa page User
+
 ## use
 
 un petit `git clone https://github.com/thp-grenobles8/s05.gossip.gui`
