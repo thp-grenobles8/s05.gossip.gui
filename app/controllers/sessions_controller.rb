@@ -7,8 +7,14 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params['email'])
     if user
       if user.authenticate(params['password'])
-        session[:user_id] = user.id
+        log_in user
         flash[:success] = 'Tu es connecté !'
+        if params['remember_me']
+          remember(user)
+          flash['info'] = 'On se souviendra de toi tkt'
+        else
+          forget(user)
+        end
         redirect_to :root
       else
         flash.now[:danger] = 'Mot de passe incorrect'
@@ -21,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.clear
+    log_out if logged_in?
     redirect_to :root
   end
 end

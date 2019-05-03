@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
+
   belongs_to :city
   has_many :gossips, foreign_key: 'author_id', class_name: 'Gossip'
   has_many :comments, foreign_key: 'author_id', class_name: 'Comment'
@@ -16,7 +18,7 @@ class User < ApplicationRecord
     message: "Entrez une adresse mail valide !"
   }
 
-  def self.anonymous
+  def User.anonymous
     anonymous = User.find_by(
       first_name: 'anonymous',
       last_name: ''
@@ -35,4 +37,29 @@ class User < ApplicationRecord
       return anonymous
     end
   end
+
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
 end

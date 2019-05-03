@@ -4,11 +4,18 @@
   <input type="hidden"
   name="authenticity_token"
   value="<%= form_authenticity_token %>">
+
   <label for="email">Email :</label><br/>
   <input type="text" name="email" value="<%= @email %>"><br/>
+
   <label for="password">Mot de passe :</label><br/>
   <input type="text" name="password" value=""><br/>
+
+  <input type="checkbox" name="remember_me">
+  <label for="remember_me">Se souvenir de moi ?</label><br/>
+
   <input type="submit" value="Connection">
+
 </form>
 
 <p>Pas encore inscrit ?
